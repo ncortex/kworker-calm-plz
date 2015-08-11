@@ -1,7 +1,11 @@
 #!/bin/bash
 
-#Programado de la forma menos chapucera posible por: http://jose-linares.com
-#EJECUTAR COMO ROOT O NO FUNCIONARÁ
+#Programado por: http://jose-linares.com
+
+if [[ $(whoami) != 'root' ]] ; then 
+	echo "Permisos insuficientes. Ejecutar como root" >&2
+	exit 1
+fi
 
 #Genera una lista para ver que gpe falla
 grep . -r /sys/firmware/acpi/interrupts/ > lista
